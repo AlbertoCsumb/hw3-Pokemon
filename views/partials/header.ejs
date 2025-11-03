@@ -1,0 +1,12 @@
+<header class="header">
+  <div class="wrap">
+    <a href="/" class="brand">Pokrmon With Farker!</a>
+    <nav>
+      <ul class="nav">
+        <% nav.forEach(item => { %>
+          <li><a href="<%= item.href %>" class="<%= (item.href === request.originalUrl) ? 'active' : '' %>"><%= item.label %></a></li>
+        <% }) %>
+      </ul>
+    </nav>
+  </div>
+</header>

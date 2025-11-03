@@ -1,0 +1,35 @@
+<%- include('partials/head', { title }); %>
+  <h1>Pokemon Locations</h1>
+  <form method="GET" class="form">
+    <label>Region
+      <select name="region">
+        <option value="">(select a region)</option>
+        <% regions.forEach((r, idx) => { 
+             const id = r.url.split('/').filter(Boolean).pop();
+        %>
+          <option value="<%= r.name %>" <%= selected===r.name || selected===id ? 'selected' : '' %>>
+            <%= r.name %>
+          </option>
+        <% }) %>
+      </select>
+    </label>
+    <button type="submit">Load</button>
+  </form>
+
+  <% if (regionData) { %>
+    <h2>Region: <%= regionData.name %></h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Location name</th></tr></thead>
+        <tbody>
+          <% regionData.locations.forEach((loc, i) => { %>
+            <tr>
+              <td><%= i+1 %></td>
+              <td><%= loc.name %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  <% } %>
+<%- include('partials/tail'); %>

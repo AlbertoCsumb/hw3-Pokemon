@@ -1,0 +1,18 @@
+<%- include('partials/head', { title }); %>
+  <h1>Pokemon Names</h1>
+  <form method="GET" class="form">
+    <label>Limit
+      <input type="number" name="limit" min="1" max="200" value="<%= limit %>"/>
+    </label>
+    <label>Starts with
+      <input type="text" name="startsWith" value="<%= startsWith %>" placeholder="e.g. pik"/>
+    </label>
+    <button type="submit">Show</button>
+  </form>
+
+  <ul class="list">
+    <% names.forEach((n,i)=>{ %>
+      <li><span class="badge"><%= i+1 %></span> <%= n %></li>
+    <% }) %>
+  </ul>
+<%- include('partials/tail'); %>
